@@ -1,5 +1,7 @@
 package com.chat.app.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.chat.app.config.JwtTokenUtil;
 import com.chat.app.entity.JwtRequest;
 import com.chat.app.entity.JwtResponse;
+import com.chat.app.entity.User;
 import com.chat.app.entity.UserDto;
 import com.chat.app.service.UserService;
 
@@ -75,6 +78,11 @@ public class JwtAuthenticationController {
 		boolean verified = userDetailsService.verify(code);
 		return verified ? ResponseEntity.ok("Congratulations! Your account has been verified.\nYou can now login using your email and password")
 						: ResponseEntity.ok("Your account was already verified or the verification code is invalid");
+	}
+	
+	@GetMapping("/users")
+	public List <User> getUsers() {
+		return userDetailsService.findAll();
 	}
 	
 }
