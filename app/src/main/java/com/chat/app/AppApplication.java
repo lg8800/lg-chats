@@ -9,10 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@SpringBootApplication(exclude = {
-  MongoAutoConfiguration.class, 
-  MongoDataAutoConfiguration.class
-})
+@SpringBootApplication
 @EnableAutoConfiguration
 public class AppApplication {
 

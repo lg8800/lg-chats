@@ -59,7 +59,7 @@ public class JwtAuthenticationController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		final String token = jwtTokenUtil.generateToken(authentication);
 
-		return ResponseEntity.ok(new JwtResponse(token));
+		return ResponseEntity.ok(new JwtResponse(token, user));
 	}
 	
 	@PreAuthorize("permitAll()")
